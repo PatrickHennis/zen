@@ -365,11 +365,20 @@ bool AsyncRPCOperation_createraw::main_impl() {
 
         UniValue obj(UniValue::VOBJ);
         obj.push_back(Pair("rawtxn", EncodeHexTx(tx_)));
+
+        // begin edited portion
+
+        // don't push transaction to network
         //sign_send_raw_transaction(obj);
+
+        // get rawtx hex
         UniValue rawtxnValue = find_value(obj, "rawtxn");
         rawtxstr = rawtxnValue.get_str();
+        // print to console
         std::cout << rawtxstr << std::endl;
         return true;
+
+        // end edited portion
     }
     /**
      * END SCENARIO #1
@@ -474,11 +483,19 @@ bool AsyncRPCOperation_createraw::main_impl() {
             }
             obj = perform_joinsplit(info);
         }
+        // begin edited portion
+
+        // don't push transaction to network
         //sign_send_raw_transaction(obj);
+
+        // get rawtx hex
         UniValue rawtxnValue = find_value(obj, "rawtxn");
         rawtxstr = rawtxnValue.get_str();
+        // print to console
         std::cout << rawtxstr << std::endl;
         return true;
+
+        // end edited portion
     }
     /**
      * END SCENARIO #2
@@ -754,11 +771,19 @@ bool AsyncRPCOperation_createraw::main_impl() {
     assert(zOutputsDeque.size() == 0);
     assert(vpubNewProcessed);
 
+    // begin edited portion
+
+    // don't push transaction to network
     //sign_send_raw_transaction(obj);
+
+    // get rawtx hex
     UniValue rawtxnValue = find_value(obj, "rawtxn");
     rawtxstr = rawtxnValue.get_str();
+    // print to console
     std::cout << rawtxstr << std::endl;
     return true;
+
+    // end edited portion
 }
 
 
