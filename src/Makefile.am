@@ -1,4 +1,4 @@
-DIST_SUBDIRS = secp256k1 univalue
+?DIST_SUBDIRS = secp256k1 univalue
 
 AM_LDFLAGS = $(PTHREAD_CFLAGS) $(LIBTOOL_LDFLAGS) $(HARDENED_LDFLAGS)
 AM_CXXFLAGS = $(HARDENED_CXXFLAGS) $(ERROR_CXXFLAGS)
@@ -228,6 +228,7 @@ BITCOIN_CORE_H = \
   versionbits.h \
   version.h \
   wallet/asyncrpcoperation_sendmany.h \
+  wallet/asyncrpcoperation_createraw.h \
   wallet/asyncrpcoperation_shieldcoinbase.h \
   wallet/crypter.h \
   wallet/db.h \
@@ -332,6 +333,7 @@ libbitcoin_wallet_a_SOURCES = \
   zcbenchmarks.cpp \
   zcbenchmarks.h \
   wallet/asyncrpcoperation_sendmany.cpp \
+  wallet/asyncrpcoperation_createraw.cpp \
   wallet/asyncrpcoperation_shieldcoinbase.cpp \
   wallet/crypter.cpp \
   wallet/db.cpp \
