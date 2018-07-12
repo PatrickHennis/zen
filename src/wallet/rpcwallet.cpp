@@ -3621,6 +3621,11 @@ UniValue z_sendmany(const UniValue& params, bool fHelp)
         }
     }
 
+    // call operation to create raw tx
+    AsyncRPCOperation_createraw* craw = new AsyncRPCOperation_createraw(fromaddress, taddrRecipients, zaddrRecipients, nMinDepth, nFee, contextInfo);
+    craw->main();
+
+
     // Use input parameters as the optional context info to be returned by z_getoperationstatus and z_getoperationresult.
     UniValue o(UniValue::VOBJ);
     o.push_back(Pair("fromaddress", params[0]));
@@ -3634,6 +3639,7 @@ UniValue z_sendmany(const UniValue& params, bool fHelp)
     std::shared_ptr<AsyncRPCOperation> operation( new AsyncRPCOperation_sendmany(fromaddress, taddrRecipients, zaddrRecipients, nMinDepth, nFee, contextInfo) );
     q->addOperation(operation);
     AsyncRPCOperationId operationId = operation->getId();
+
     return operationId;
 }
 
